@@ -119,7 +119,7 @@ function subStockView($param)
 			return;
 		}
 
-		$sql = fnSqlStockList(1, $param);
+		$sql = fnSqlStockList(0, $param);
 		$res = mysqli_query($param["conn"], $sql);
 		$row = mysqli_fetch_array($res);
 
@@ -304,9 +304,16 @@ function subStockEditView($param)
 				<th>距離</th>
 				<td>
 					<?php
+					if (!$param["stockNo"]) {
+						$param["distance"] = 1;
+					}
 					for ($i = 0; $i < 4; $i++) {
+						$check = '';
+						if (($param["distance"] - 1) == $i) {
+							$check = 'checked = "checked"';
+						}
 					?>
-						<input type="radio" name="distance" value="<?php print $i + 1; ?>" <?php if ($param["distance"] == $i + 1) print ' checked="checked"'; ?> /> <?php print fnDistanceName($i); ?>
+						<input type="radio" name="distance" value="<?php print $i + 1; ?>" <?php print $check; ?> /> <?php print fnDistanceName($i); ?>
 					<?php
 					}
 					?>
