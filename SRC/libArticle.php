@@ -44,7 +44,6 @@ function subArticle()
 		<input type="hidden" name="sPage" value="<?php print $sPage ?>" />
 		<input type="hidden" name="articleNo" />
 		<input type="hidden" name="sName" />
-		<input type="hidden" name="sRoom" />
 
 		<a href="javascript:form.act.value='articleEdit';form.submit();"><img src="./images/btn_enter.png"></a>
 
@@ -106,8 +105,6 @@ function subArticle()
 				<th class="list_head">3Dパース<?php fnOrder('DRAWING', 'articleSearch') ?></th>
 				<th class="list_head">営業担当者<?php fnOrder('SELLCHARGE', 'articleSearch') ?></th>
 			</tr>
-			$sql = fnSqlArticleList(1, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleNote, $sKeyBox, $sDrawing, $sSellCharge, $sPage, $orderBy, $orderTo);
-			var_dump($sql);
 			<?php
 			$sql = fnSqlArticleList(1, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleNote, $sKeyBox, $sDrawing, $sSellCharge, $sPage, $orderBy, $orderTo);
 
@@ -313,8 +310,8 @@ function subArticleEditComplete()
 
 		$res = mysqli_query($conn, $sql);
 
-		/* $sql = fnSqlFManagerInsert(fnNextNo('FM'),$article,$room,$articleNote,$del);
-		   $res = mysqli_query($conn,$sql); */
+		$sql = fnSqlFManagerInsert(fnNextNo('FM'), $article, $room, $articleNote, $del);
+		$res = mysqli_query($conn, $sql);
 	}
 
 	$_REQUEST['act'] = 'articleSearch';
