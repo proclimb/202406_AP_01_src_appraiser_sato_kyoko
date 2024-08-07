@@ -19,7 +19,7 @@ function subArticle()
 	$orderTo = $_REQUEST['orderTo'];
 	$sPage   = $_REQUEST['sPage'];
 
-	if ($sDel = '') {
+	if ($sDel == '') {
 		$sDel = 1;
 	}
 
@@ -64,7 +64,7 @@ function subArticle()
 				</tr>
 				<tr>
 					<th>部屋番号</th>
-					<td><input type="text" name="sRoom" value="" size="30" /><?php print $sArticle ?></td>
+					<td><input type="text" name="sRoom" value="<?php print $sRoom ?>" size="30" /></td>
 					<th>3Dパース</th>
 					<td><input type="text" name="sDrawing" value="<?php print $sDrawing ?>" size="30" /></td>
 				</tr>
@@ -106,6 +106,8 @@ function subArticle()
 				<th class="list_head">3Dパース<?php fnOrder('DRAWING', 'articleSearch') ?></th>
 				<th class="list_head">営業担当者<?php fnOrder('SELLCHARGE', 'articleSearch') ?></th>
 			</tr>
+			$sql = fnSqlArticleList(1, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleNote, $sKeyBox, $sDrawing, $sSellCharge, $sPage, $orderBy, $orderTo);
+			var_dump($sql);
 			<?php
 			$sql = fnSqlArticleList(1, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleNote, $sKeyBox, $sDrawing, $sSellCharge, $sPage, $orderBy, $orderTo);
 
