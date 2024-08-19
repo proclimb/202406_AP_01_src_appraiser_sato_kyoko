@@ -5,7 +5,7 @@ function fnSellEditCheck() {
 
 	tmp = form.searchDT.value;
 	if (tmp.length == 0) {
-		alert('日付を入力してください');
+		alert('YYYY/MM/DD の形式で日付を入力してください');
 		return;
 	}
 	if (!fnYMDCheck("正しい日付", form.searchDT)) { return; }
