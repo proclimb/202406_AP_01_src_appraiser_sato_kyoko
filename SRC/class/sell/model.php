@@ -57,7 +57,7 @@ function fnSqlSellList($flg, $param)
     if ($param["sAreaFrom"] !== "") {
         $where .= " AND AREA >= " . $param["sAreaFrom"];
     }
-    if ($param["sAreaTo"]) {
+    if ($param["sAreaTo"] !== "") {
         $where .= " AND AREA <= " . $param["sAreaTo"];
     }
     if ($param["sYearsFrom"]) {
