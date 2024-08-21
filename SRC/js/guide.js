@@ -63,8 +63,8 @@ function fnGuideMove(muki, articleNo) {
 		var obj = $("#s" + articleNo);
 
 		// 名称の取得
-		var articleName = $(obj.children()[0]).text();
-		var articleRoom = $(obj.children()[1]).text();
+		var articleName = $(obj.children()[0]).html();
+		var articleRoom = $(obj.children()[1]).html();
 		var articleKey = $(obj.children()[2]).html();
 
 		// 登録リストに保存(右側に移動)
